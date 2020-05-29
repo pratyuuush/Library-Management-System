@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="HandheldFriendly" content="true">
+	<title>{% block title %}Home | Library Management System {% endblock %}</title>
+
+
+
+	<link rel="shortcut icon" href="http://apps.operce.com/lms//public/images/favicon.ico">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+		integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+	<link rel="stylesheet" href="{% static 'css/style2.css' %}" />
+
+	<link rel="stylesheet" href="{% static 'css/fontawesome.min.css' %}" />
+	<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/selectivizr-min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/superfish.js' %}"></script>
+
+
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+	<style>
+		.navbar {
+			width: 100%;
+			background-color: #6d214f;
+			overflow: auto;
+		}
+
+		.navbar a {
+			float: left;
+			padding: 12px;
+			color: white;
+			text-decoration: none;
+			font-size: 17px;
+		}
+
+		.navbar a:hover {
+			background-color: #6d214f;
+		}
+
+
+
+
+		.buttonColor {
+			background-color: #6d214f;
+			border: none;
+			color: white;
+			padding: 15px 32px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 4px 2px;
+			cursor: pointer;
+			border-radius: 10%;
+			width: 100%;
+		}
+
+		/* Media Queries: Tablet Landscape */
+		@media screen and (max-width: 1060px) {
+			#primary {
+				width: 67%;
+			}
+
+			#secondary {
+				width: 30%;
+				margin-left: 3%;
+			}
+		}
+
+		input[type=number]::-webkit-inner-spin-button,
+		input[type=number]::-webkit-outer-spin-button {
+			-webkit-appearance: none;
+			margin: 0;
+		}
+
+		/* Media Queries: Tabled Portrait */
+		@media screen and (max-width: 768px) {
+			#primary {
+				width: 100%;
+			}
+
+			#secondary {
+				width: 100%;
+				margin: 0;
+				border: none;
+			}
+		}
+	</style>
+
+</head>
+
+<body>
+	<div class="navbar">
+		<a href="{% url 'home' %}">LibraMini</a>
+
+		<a href="{% url 'logout' %}"><i class="fa fa-trash"></i> Logout</a>
+	</div>
+
+
+
+	<aside class="right-bar">
+		<div class="row header">
+			<div class="col admin-menu">
+
+
+				<div class="popup-container" id="modal_manually">
+					<div class="popup-window popup-window-small">
+						<div class="popup-header"><i class="fa fa-pencil"></i> Please fill details<a href="#"
+								class="popup-close right" data-href="modal"><i class="fa fa-times"
+									aria-hidden="true"></i></a></div>
+						<div class="popup-content">
+
+							<form action="#" data-action="http://apps.operce.com/lms//home/changepassword" id="form"
+								class="clearfix form form_ajax" method="post">
+
+								<div class="row ajax_response"></div>
+								<div class="form-body">
+									<div class="input-element-half">
+										<label for="email">Email <sup>*</sup></label>
+										<input type="email" id="email" name="email">
+									</div>
+									<div class="input-element-half">
+										<label for="old">Old Password <sup>*</sup></label>
+										<input type="password" id="old" name="old">
+									</div>
+									<div class="row">
+										<div class="input-element-half">
+											<label for="name">New Password <sup>*</sup></label>
+											<input type="password" id="name" name="new">
+										</div>
+										<div class="input-element-half">
+											<label for="name">Confirm password <sup>*</sup></label>
+											<input type="password" id="name" name="confirm">
+										</div>
+									</div>
+
+									<button type="submit" class="button send">Submit</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+
+				<div class="popup-container" id="modal_username">
+					<div class="popup-window popup-window-small">
+						<div class="popup-header"><i class="fa fa-pencil"></i> Please fill details<a href="#"
+								class="popup-close right" data-href="modal"><i class="fa fa-times"
+									aria-hidden="true"></i></a></div>
+						<div class="popup-content">
+
+							<form action="#" data-action="http://apps.operce.com/lms//home/changeusername" id="form"
+								class="clearfix form form_ajax" method="post">
+
+								<div class="row ajax_response"></div>
+								<div class="form-body">
+									<div class="input-element">
+										<label for="email">Email <sup>*</sup></label>
+										<input type="email" id="email" name="email">
+									</div>
+									<div class="input-element-half">
+										<label for="old">Old Username <sup>*</sup></label>
+										<input type="password" id="old" name="old">
+									</div>
+									<div class="input-element-half">
+										<label for="name">New Username <sup>*</sup></label>
+										<input type="password" id="name" name="new">
+									</div>
+
+									<button type="submit" class="button send">Submit</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row content">
+			{% block b_main %}
+			{% endblock %}
+		</div>
+	</aside>
+
+
+
+
+</body>
+
+</html>

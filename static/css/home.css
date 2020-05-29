@@ -1,0 +1,13 @@
+.buttonStyle {
+    background-color: #6d214f; /* Green */
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 25px;
+    margin: 6px 2px;
+    cursor: pointer;
+    border-radius: 30%;
+  }

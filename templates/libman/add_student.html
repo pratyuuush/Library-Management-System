@@ -1,0 +1,15 @@
+{% extends 'libman/base.html' %}
+{% load static %}
+<title>{% block title %} Add Students {% endblock %}</title>
+{% block b_main %}
+<div class="container">
+  <h3><b>Add new Student</b></h3>
+  <form method="post">
+    {{ s_form.as_p }}
+    {% csrf_token %}
+    <input type="submit" value="Submit" style="background-color:#6d214f;color: white;border-radius: 10%;">
+  </form>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'libman/base.html' %}
+{% load static %}
+{% block title %} Issue Book {% endblock %}
+{% block b_main %}
+
+
+
+<div class="container">
+  <h3 style="padding-left: 150px;"><b>Issue Book</b></h3>
+  <form method="post" style="padding-left: 130px;">
+    {{ i_form.as_p }}
+    {% csrf_token %}
+
+    <input type="submit" value="Submit" style="background-color: #6d214f;color: white;border-radius: 10%;">
+
+  </form>
+
+
+</div>
+
+{% endblock %}

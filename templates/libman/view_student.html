@@ -1,0 +1,70 @@
+{% extends 'libman/base.html' %}
+{% load static %}
+<title>{% block title %} View Student {% endblock %}</title>
+{% block b_main %}
+<br>
+<br>
+<div style="padding-left: 30px;">
+
+
+
+  <button style="background-color: #6d214f;color: white;border-radius: 10%;width: 170px;height: 50px;"
+    onclick="window.location.href = '{% url 'add_student' %}';">Add students</button>
+</div>
+<div class="dropdown" style="padding-left: 1143px;">
+  <button type="button" class="dropdown-toggle"
+    style="background-color: #6d214f;color: white;border-radius: 10%;width: 170px;height: 50px;" data-toggle="dropdown">
+    Sort
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="{% url 'order_student_studId' %}">Student Id</a>
+    <a class="dropdown-item" href="{% url 'order_student_sem' %}">Semester</a>
+    <a class="dropdown-item" href="{% url 'order_student_dept' %}">Department</a>
+    <a class="dropdown-item" href="{% url 'order_student_batch' %}">Batch</a>
+    <a class="dropdown-item" href="{% url 'order_student_fname' %}">Name</a>
+  </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+{% if students %}
+<table class="layout">
+  <thead>
+    <th>Student ID</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Address</th>
+    <th>Phone no.</th>
+    <th>Email</th>
+    <th>Department</th>
+    <th>Batch</th>
+    <th>Semester</th>
+  </thead>
+  {% for student in students %}
+  <tr>
+    <td> {{ student.student_id }}</td>
+    <td>{{ student.Fname }}</td>
+    <td>{{ student.Lname }}</td>
+    <td>{{ student.Address }}</td>
+    <td>{{ student.phone }}</td>
+    <td>{{ student.email }}</td>
+    <td>{{ student.depart }}</td>
+    <td>{{ student.batch }}</td>
+    <td>{{ student.semester }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% else %}
+<p style="padding-left: 30px;"> There are no students registered yet! </p>
+{% endif %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+{% endblock %}

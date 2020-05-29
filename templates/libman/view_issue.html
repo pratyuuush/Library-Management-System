@@ -1,0 +1,61 @@
+{% extends 'libman/base.html' %}
+{% load static %}
+{% block title %} View Issue {% endblock %}
+{% block b_main %}
+<br>
+<br>
+
+<div style="padding-left: 30px;">
+
+
+
+  <button style="background-color: #6d214f;color: white;border-radius: 10%;width: 170px;height: 50px;"
+    onclick="window.location.href = '{% url 'new_issue' %}';">Issue a new book</button>
+</div>
+<br>
+<br>
+<br>
+<br>
+<div class="dropdown" style="padding-left: 909px;">
+  <button type="button" class="dropdown-toggle"
+    style="background-color: #6d214f;color: white;border-radius: 10%;width: 170px;height: 50px;" data-toggle="dropdown">
+    Sort
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="{% url 'order_issue_isbn' %}">Isbn</a>
+    <a class="dropdown-item" href="{% url 'order_issue_bname' %}">Borrower Name</a>
+    <a class="dropdown-item" href="{% url 'order_issue_bid' %}">Book Id</a>
+  </div>
+</div>
+{% if issue %}
+<table class="layout">
+  <thead>
+    <th>Isbn no.</th>
+    <th>Book Name</th>
+    <th>Borrower Name</th>
+    <th>Borrower ID</th>
+    <th>Issue Date</th>
+  </thead>
+  {% for borrow in issue %}
+  <tr>
+    <td> {{ borrow.isbn }}</td>
+    <td>{{ borrow.book_name }}</td>
+    <td>{{ borrow.borrower_name }}</td>
+    <td>{{ borrow.borrower_id }}</td>
+    <td>{{ borrow.issue_date }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% else %}
+
+<p style="padding-left: 30px;padding-top: 10px;"> There are no books issued yet! </p>
+{% endif %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% endblock %}

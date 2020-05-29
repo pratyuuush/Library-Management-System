@@ -1,0 +1,62 @@
+{% extends 'libman/base.html' %}
+{% load static %}
+{% block title %} View Books {% endblock %}
+{% block b_main %}
+<br>
+<br>
+<div style="padding-left: 30px;">
+
+  <button style="background-color: #6d214f;color: white;border-radius: 10%;width: 170px;height: 50px;"
+    onclick="window.location.href = '{% url 'add_book' %}';">Add book!</button>
+</div>
+<div class="dropdown" style="padding-left: 90px;">
+  <button type="button" class="dropdown-toggle"
+    style="background-color: #6d214f;color: white;border-radius: 10%;width: 170px;height: 50px;" data-toggle="dropdown">
+    Sort
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="{% url 'order_book_bname' %}">Book Name</a>
+    <a class="dropdown-item" href="{% url 'order_book_aname' %}">Author Name</a>
+    <a class="dropdown-item" href="{% url 'order_book_nobooks' %}">No. of Books</a>
+    <a class="dropdown-item" href="{% url 'order_book_dept' %}">Department</a>
+  </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+{% if books %}
+<table class="layout">
+  <thead>
+    <th>Isbn no.</th>
+    <th>Book Name</th>
+    <th>Author Name</th>
+    <th>No of books</th>
+    <th>Department</th>
+    <th>Publisher</th>
+  </thead>
+  {% for book in books %}
+  <tr>
+    <td> {{ book.isbn_no }}</td>
+    <td>{{ book.book_name }}</td>
+    <td>{{ book.author_name }}</td>
+    <td>{{ book.no_of_books }}</td>
+
+    <td>{{ book.department }}</td>
+    <td>{{ book.publisher }}</td>
+
+  </tr>
+  {% endfor %}
+</table>
+{% else %}
+<p style="padding-left: 30px;"> There are no books available currently! </p>
+{% endif %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% endblock %}
